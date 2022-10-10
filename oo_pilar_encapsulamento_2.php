@@ -5,16 +5,7 @@
         protected $sobrenome = 'Alvarino';
         public $humor = 'Feliz';
 
-        // public function getNome() {
-        //     return $this->nome;
-        // }
-        // //atualiza o getNome
-        // public function setNome($value) {
-        //     if(strlen($value) >= 3) {
-        //         $this->nome = $value;
-        //     }
-        // }
-
+        /*
         public function __get($attr) {
             return $this->$attr;
         }
@@ -23,6 +14,7 @@
         {
             $this->$attr =  $value;
         }
+        */
 
         private function axecutarmania() {
             echo 'Assobiar';
@@ -46,8 +38,55 @@
 
     }
 
+    class Filho extends Pai {
+        /*
+        public function getAtributo($attr) {
+            return $this->$attr;
+        }
+
+        public function setAtributo($attr, $value) {
+            $this->$attr = $value;
+        }
+        */
+
+        public function __get($attr) {
+            return $this->$attr;
+        }
+
+        public function __set($attr, $value) 
+        {
+            $this->$attr =  $value;
+        }
+
+    }
+    /*
     $pai = new Pai();
     //echo $pai->getNome();
     echo $pai->executarAcao();
+    */
+    //criar variavel filho e a ela uma estancia de filho.
+    $filho = new Filho();
+    echo '<pre>';
+    print_r($filho);
+    echo '<pre>';
 
+    /*
+    $filho->setAtributo('humor', 'triste');
+    echo '<br/ >';
+    echo $filho->getAtributo('humor');
+    */
+
+    //exibir os métodos do objeto
+    echo '<pre>';
+    print_r (get_class_methods($filho ));
+    echo '<pre>';
+
+    echo $filho->__get('nome');
+    $filho->__set('nome', 'Lucas');
+    echo '<br/ >';
+    echo $filho->__get('nome');
+
+    echo '<pre>';
+    print_r($filho);
+    echo '<pre>';
 ?>
